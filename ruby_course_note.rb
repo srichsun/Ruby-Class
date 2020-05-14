@@ -37,6 +37,16 @@ puts "this is a book".class # String
 puts 'this is a book'.class # String
 puts "100".class # String
 puts '100'.class # String
+puts true.class # TrueClass
+puts false.class # FalseClass
+puts nil.class # nil 意義就是什麼都沒有
+puts 0.class # Fixnum
+
+# 物件(object)有不同型態(class)，各別不同型態的物件有各別的方法(methods)可以用
+100.count
+"100".to_i
+"taipei".capitalize
+100.capitalize #NoMethodError: undefined method `capitalize' for 100:Fixnum 代表數字沒有capitalize這個方法可以用
 
 # 其中一個是float會變成float
 puts (100/3.0) # 33.333333333333336 class是float
