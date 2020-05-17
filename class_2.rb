@@ -51,23 +51,3 @@ if age < 30 || gender == 'girl' && height > 180
 else
   puts "too old or is a boy no!"
 end
-
-
-# loop
-# while condition
-#
-# end
-#
-# times
-#
-#
-# # action
-#
-#
-# # array
-#
-#
-# # hash
-#
-#
-# # regular expression
