@@ -94,11 +94,3 @@ puts money # 100
 # https://ruby-doc.org/core-2.7.1/
 require './david_library'
 say_something_cool
-
-# # # array
-# #
-# #
-# # # hash
-# #
-# #
-# # # regular expression
