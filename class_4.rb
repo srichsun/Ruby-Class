@@ -89,6 +89,7 @@ puts c # This is NY
 puts d # This is NY
 
 # hash
+# {key: value}
 Mary = {"name": "Mary", "personality"=> "happy", "height": 160, "cup": "G"}
 
 puts Mary
@@ -120,7 +121,7 @@ end
 
 # method 1
 file = open('./for_example/file_for_read.rb')
-text = file.read # 整個檔案都需要放到記憶體才會印出來
+text = file.read # file_for_read是在硬碟，讀取硬碟速度慢，整個檔案都需要讀完才能存到變數（在記憶體），才能印出來
 puts text
 file.close
 
