@@ -92,5 +92,5 @@ puts money # 100
 # standard API
 # Core API 就是你要先去require才能用這個方法
 # https://ruby-doc.org/core-2.7.1/
-require './david_library'
+require './for_example/david_library'
 say_something_cool

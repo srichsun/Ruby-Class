@@ -119,20 +119,20 @@ end
 # chapter 3 讀檔案
 
 # method 1
-file = open('file_for_read.rb')
+file = open('./for_example/file_for_read.rb')
 text = file.read # 整個檔案都需要放到記憶體才會印出來
 puts text
 file.close
 
 # method 2
-file = open('file_for_read.rb')
+file = open('./for_example/file_for_read.rb')
 while text = file.gets do # 一次讀到一行就印出來
   puts text
 end
 file.close
 
 # method 3
-file = open('file_for_read.rb')
+file = open('./for_example/file_for_read.rb')
 while text = file.gets do
   if /don\’t matter/ =~ text # 符合條件才印
     puts text
