@@ -99,6 +99,11 @@ Mary.each do |key, value|
   puts "#{key}: #{value}"
 end
 
+# 三種寫法
+snowy_owl = { "type" => "Bird", "diet" => "Carnivore", "life_span" => "10 years" } # original
+snowy_owl = { :type => "Bird", :diet => "Carnivore", :life_span => "10 years" } # string 可以改成 symbol
+snowy_owl = { "type": "Bird", "diet": "Carnivore", "life_span": "10 years" } # => 可以改成 :
+
 # regular expression
 # 確認字串是不是包含某些字串 / 想要顯示包括00字串的那幾行資料 /想要取得00與xx之間所寫的字串
 puts /love/ =~ 'Iwanttosayloveyou' # 10 回傳符合的位置
