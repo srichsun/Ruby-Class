@@ -168,3 +168,59 @@ else
   lao_sai(annual_pay_now)
 end
 p annual_pay_one_year_later
+
+# 利用return替換掉波動拳
+
+# 寫法 1 太多層if else很難看
+girl1 = {"height": 178, "cup": "g", "appearance": "pretty", "age": 17, "personality": "bad", "name": "Scarlett"}
+girl2 = {"height": 169, "cup": "d", "appearance": "average", "age": 26, "personality": "nice", "name": "Natalia" }
+girl3 = {"height": 171, "cup": "g", "appearance": "ugly", "age": 35, "personality": "lovely", "name": "Chanel" }
+girl4 = {"height": 171, "cup": "g", "appearance": "pretty", "age": 35, "personality": "lovely", "name": "Mary" }
+
+girls = [girl1, girl2, girl3, girl4]
+
+def check_if_true_love(girl)
+  if girl[:height] > 170
+    if girl[:cup] == "g"
+      if girl[:appearance] == "pretty"
+        if girl[:age] < 18
+          "Yes #{girl[:name]} is my true love"
+        else
+          "#{girl[:name]}好老不要"
+        end
+      else
+        "#{girl[:name]}好醜不要"
+      end
+    else
+      "#{girl[:name]}好平不要"
+    end
+  else
+    "#{girl[:name]}好矮不要"
+  end
+end
+
+girls.each do |girl|
+  puts check_if_true_love(girl)
+end
+
+
+# 寫法 2 用 return 讓結構簡潔清楚
+girl1 = {"height": 178, "cup": "g", "appearance": "pretty", "age": 17, "personality": "bad", "name": "Scarlett"}
+girl2 = {"height": 169, "cup": "d", "appearance": "average", "age": 26, "personality": "nice", "name": "Natalia" }
+girl3 = {"height": 171, "cup": "g", "appearance": "ugly", "age": 35, "personality": "lovely", "name": "Chanel" }
+girl4 = {"height": 171, "cup": "g", "appearance": "pretty", "age": 35, "personality": "lovely", "name": "Mary" }
+
+girls = [girl1, girl2, girl3, girl4]
+
+def check_if_true_love(girl)
+  return "#{girl[:name]}好矮不要" unless girl[:height] > 170
+  return "#{girl[:name]}好平不要" unless girl[:cup] == "g"
+  return "#{girl[:name]}好醜不要" unless girl[:appearance] == "pretty"
+  return "#{girl[:name]}好老不要" unless girl[:age] < 18
+
+  "Yes #{girl[:name]} is my true love"
+end
+
+girls.each do |girl|
+  puts check_if_true_love(girl)
+end
