@@ -170,6 +170,130 @@ puts girl1.cup # 物件.實體變數名稱 可以取到變數的值
 girl1.cup = 'A'
 puts girl1.cup
 
+# pratice example
+#可以設定身高跟性別,有預設值
+class Boy
+  def set_height height = 180
+    @height = height
+    puts "my height is #{@height}"
+  end
+  def set_gender gender = "boy"
+    @gender = gender
+    puts "my gender is #{@gender}"
+  end
+  def who_am_I
+    puts "my height is #{@height} and my gender is #{@gender}"
+  end
+end
+david = Boy.new
+p david
+david.set_height(160)
+p david
+david.set_gender("girl")
+p david
+david.who_am_I
+
+# 創物件的時候身高跟性別就會有預設值,不需要先呼叫fuction。利用initialize跟實體變數可以共用
+class Boy
+  def initialize
+    @height = 180
+    @gender = "boy"
+  end
+  def set_height height
+    @height = height
+    puts "my height is #{@height}"
+  end
+  def set_gender gender
+    @gender = gender
+    puts "my gender is #{@gender}"
+  end
+  def who_am_I
+    puts "my height is #{@height} and my gender is #{@gender}"
+  end
+end
+david = Boy.new
+david.who_am_I
+
+#這個class有兩個實體變數@height,@gender有各別讀取跟更新值的方法
+class Boy
+  def initialize
+    @height = 180
+    @gender = "boy"
+  end
+  def return_height
+    puts "my height is #{@height}"
+    @height
+  end
+  def set_height height
+    @height = height
+    puts "my height become #{@height}"
+  end
+  def return_gender
+    @gender
+  end
+  def set_gender gender
+    @gender = gender
+    puts "my gender become #{@gender}"
+  end
+  def who_am_I
+    puts "my height is #{@height} and my gender is #{@gender}"
+  end
+end
+david = Boy.new
+p david.return_gender
+p david.return_height
+david.who_am_I
+#把上面例子function method 名稱改成直觀的命名
+#達到物件.變數名稱 可以取到變數
+#物件.變數名稱＝可以更新變數
+class Boy
+  def initialize
+    @height = 180
+    @gender = "boy"
+  end
+  def height
+    puts "my height is #{@height}"
+    @height
+  end
+  def height= cm
+    @height = cm
+    puts "my height become #{@height}"
+  end
+  def gender
+    puts "my gender is #{@gender}"
+    @gender
+  end
+  def gender=(g)
+    @gender = g
+    puts "my gender become #{@gender}"
+  end
+  def who_am_I
+    puts "my height is #{@height} and my gender is #{@gender}"
+  end
+end
+david = Boy.new
+p david.gender
+david.gender=("girl")
+p david.height
+david.height= 190
+david.who_am_I
+#attr_accessor 等同幫我宣告以上四個function
+class Boy
+  attr_accessor :height, :gender
+  def initialize
+    @height = 180
+    @gender = "boy"
+  end
+  def who_am_I
+    puts "my height is #{@height} and my gender is #{@gender}"
+  end
+end
+david = Boy.new
+p david.gender
+p david.gender = "girl"
+p david.height
+p david.height = 190
+david.who_am_I
 ========以下待整理
 
 # class方法
@@ -204,8 +328,11 @@ end
 
 Boy.say_whats_up
 
+# class變數
 class Terminator
   @@people_got_killed_num = 0
+  # 開頭是@@表示是一個class變數
+  # 這個class的object可以共用，即都可以讀到值，也都可以改變值
 
   def initialize(name = "Arnold v1")
     @name = name
@@ -231,9 +358,6 @@ terminator2 = Terminator.new
 terminator2.kill_one_citizen # terminator1這個object呼叫方法後讓@@people_got_killed_num 再+ 1
 
 puts Terminator.people_got_killed_num # 最後@@people_got_killed_num 變3
-
-t = Terminator.new
-puts t.sex
 
 # class中可以定義常數
 # # 讀取class / module中的常數
