@@ -360,51 +360,53 @@ terminator2.kill_one_citizen # terminator1這個object呼叫方法後讓@@people
 puts Terminator.people_got_killed_num # 最後@@people_got_killed_num 變3
 
 # class中可以定義常數
-# # 讀取class / module中的常數
-# # 呼叫class / module中的方法
-#
-# # ex1
-# class Boy
-#   HEIGHT = 180
-# end
-# puts Boy::HEIGHT
-#
-# # ex2
-# module Human
-#   HEIGHT = 20
-# end
-# puts Human::HEIGHT
-#
-# # ex3 class module 可以互相套
-# module M2
-#   CONT_M2 = 30
-#
-#   class Other
-#       CONT_OTHER = 40
-#   end
-# end
-# puts M2::CONT_M2
-# p M2::Other # 拿到 class
-# puts M2::Other::CONT_OTHER
-#
-# # ex4  class module 可以互相套
-# class M2
-#   CONT_M2 = 30
-#
-#   module Other
-#       CONT_OTHER = 40
-#   end
-# end
-# puts M2::CONT_M2
-# p M2::Other # 拿到 module
-# puts M2::Other::CONT_OTHER
+# 用::
+# 讀取class / module中的常數
+# 拿到class / module中的方法
 
-# 呼叫class / module的方法
+# ex1
+class Boy
+  HEIGHT = 180
+end
+
+puts Boy::HEIGHT
+
+# ex2
+module Girl
+  HEIGHT = 20
+end
+puts Girl::HEIGHT
+
+# ex3 class module 可以互相套
+module BadBoy
+  CONT_BOY = 30
+
+  class Girl
+    CONT_GIRL = 40
+  end
+end
+puts BadBoy::CONT_BOY
+p BadBoy::Girl # 拿到 class
+puts BadBoy::Girl::CONT_GIRL
+
+# ex4 class module 可以互相套
+class BadGirl
+  CONT_GIRL = 30
+
+  module Boy
+      CONT_BOY = 40
+  end
+end
+puts BadGirl::CONT_GIRL
+p BadGirl::Boy # 拿到 module
+puts BadGirl::Boy::CONT_BOY
+
+# ex5 呼叫多層class / module 中的方法
 class M2
   CONT_M2 = 30
 
   module Other # class裡的module
-    def self.say # 不能只有say
+    def self.say
       puts "hi"
     end
 
