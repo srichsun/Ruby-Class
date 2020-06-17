@@ -294,7 +294,6 @@ p david.gender = "girl"
 p david.height
 p david.height = 190
 david.who_am_I
-========以下待整理
 
 # class方法
 # 寫法1 最常見，先熟悉這個
@@ -304,7 +303,9 @@ class Boy
   end
 end
 
+# 呼叫類別方法 方法1
 Boy.say_whats_up
+# 呼叫類別方法 方法2
 Boy::say_whats_up
 
 # 寫法2 少見
@@ -421,6 +422,7 @@ end
 M2::Other.say
 M2::Other::Positive.say_positive
 
+========以下待整理
 # 繼承 inheritance
 繼承可以做到下面這些事:
 - 不用重複寫code，結構乾淨，簡潔。
