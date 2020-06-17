@@ -339,7 +339,7 @@ class Terminator
     @name = name
   end
 
-  def self.people_got_killed_num
+  def self.people_got_killed_num # 想要從class外面拿到class變數需要自己寫方法去讀取
     @@people_got_killed_num
   end
 
@@ -347,6 +347,10 @@ class Terminator
     @@people_got_killed_num += 1
 
     puts "one person got terminated"
+  end
+
+  def kill_target(object)
+    puts "#{object} got terminated"
   end
 end
 
@@ -359,6 +363,71 @@ terminator2 = Terminator.new
 terminator2.kill_one_citizen # terminator1這個object呼叫方法後讓@@people_got_killed_num 再+ 1
 
 puts Terminator.people_got_killed_num # 最後@@people_got_killed_num 變3
+
+# 擴充class => 在原有的class新增方法
+# ex 1
+class Terminator
+  def turn_good
+    puts "I am a good boy, I do not kill people anymore"
+  end
+end
+
+t = Terminator.new
+t.turn_good
+
+# 針對原本class方法做修改，但又不想改原本的class => 用繼承
+class CleaningRobot < Terminator
+  def kill_target(insect) # 對原有class的方法做改寫
+    super(insect) # 呼叫父類別的同名方法，傳入參數insect
+    puts "I am a good cleaning robot!"
+  end
+
+  def self.interval_clean # 新增原有class沒有的功能
+    if Time.now.hour == 8
+      puts "start cleaning"
+    end
+  end
+end
+
+c = CleaningRobot.new
+c.kill_target("Cockroach")
+
+CleaningRobot.interval_clean
+
+
+# ex 2
+class Numeric # 也可以在ruby既有class上加方法
+  def become_half
+    self / 2 # self可以拿到呼叫這個實體方法的物件 / 誰呼叫這個實體方法，self就是這個”誰“
+  end
+end
+
+puts 100.become_half
+
+# ex 3 修改既有ruby方法
+class RingArray < Array
+  def [](i)
+    idx = i % size
+    super(idx)
+  end
+end
+
+eto = RingArray["0", "1", "2", "3", "4", "5"]
+p eto[0]
+p eto[1]
+p eto[7] # 1
+p eto[8] # 2
+
+
+# Ruby中所有類別都是object的子類別
+# Ruby class 繼承圖
+http://wiki.plweb.org/images/2/29/%E7%AC%AC%E4%B8%80%E5%BC%B5%E5%9C%96.jpg
+
+# 繼承 inheritance
+# 繼承可以做到下面這些事:
+- 把共用的功能寫在父class，後面的class再繼承它 => 不用重複寫code，結構乾淨，簡潔，code可以重覆利用。
+- 保存原本所有功能，並追加新功能
+- 對原有功能做修改，但不修改原有的code
 
 # class中可以定義常數
 # 用::
@@ -421,12 +490,3 @@ end
 
 M2::Other.say
 M2::Other::Positive.say_positive
-
-========以下待整理
-# 繼承 inheritance
-繼承可以做到下面這些事:
-- 不用重複寫code，結構乾淨，簡潔。
-- 保存原本所有功能，並追加新功能
-
-# Ruby class 繼承圖
-http://wiki.plweb.org/images/2/29/%E7%AC%AC%E4%B8%80%E5%BC%B5%E5%9C%96.jpg
