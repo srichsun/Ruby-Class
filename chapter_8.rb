@@ -153,7 +153,7 @@ class Girl
 
   # attr_accessor :cup等你幫你新增以下兩個method
 
-  # attr_reador :cup 等於以下這個方法
+  # attr_reader :cup 等於以下這個方法
   # def cup
   #   @cup
   # end
@@ -329,7 +329,36 @@ end
 
 Boy.say_whats_up
 
-# class變數
+# class變數 ex1
+class Guy
+  @@totally_money_saved = 0
+
+  def set_name(name)
+    @name = name
+  end
+
+  def save_money(money)
+    @@totally_money_saved = @@totally_money_saved + money
+  end
+
+  def self.show_totally_money
+    @@totally_money_saved
+  end
+end
+
+puts Guy.show_totally_money
+
+aric = Guy.new
+aric.set_name("Aric")
+aric.save_money(100)
+puts Guy.show_totally_money
+
+david = Guy.new
+david.save_money(777)
+aric.set_name("david")
+puts Guy.show_totally_money
+
+# class變數 ex2
 class Terminator
   @@people_got_killed_num = 0
   # 開頭是@@表示是一個class變數
@@ -364,7 +393,7 @@ terminator2.kill_one_citizen # terminator1這個object呼叫方法後讓@@people
 
 puts Terminator.people_got_killed_num # 最後@@people_got_killed_num 變3
 
-# 擴充class => 在原有的class新增方法
+# 擴充class => 在原有的class新增 or 修改方法
 # ex 1
 class Terminator
   def turn_good
@@ -422,6 +451,11 @@ p eto[8] # 2
 # Ruby中所有類別都是object的子類別
 # Ruby class 繼承圖
 http://wiki.plweb.org/images/2/29/%E7%AC%AC%E4%B8%80%E5%BC%B5%E5%9C%96.jpg
+
+p 5.class # Fixnum
+p 5.class.superclass # Interger
+p 5.class.superclass.superclass # Numberic
+p 5.class.superclass.superclass.superclass # Object
 
 # 繼承 inheritance
 # 繼承可以做到下面這些事:
